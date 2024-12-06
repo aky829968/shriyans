@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDb = () => {
   mongoose
-    .connect(process.env.DB_URL)
+    .connect("mongodb://localhost:27017/uber")
     .then(() => {
       console.log("Database connected");
     })

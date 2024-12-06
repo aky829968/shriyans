@@ -38,12 +38,17 @@ userSchema.methods.generateAuthToken = function () {
   });
   return token;
 };
-userSchema.methods.comparePassword = async function (password) {
+const comparePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
-userSchema.methods.hashPassword = async function (password) {
+const hashPassword = async function (password) {
   return await bcrypt.hash(password, 10);
 };
 
 const userModel = mongoose.model("user", userSchema);
-module.exports = userModel;
+module.exports = {
+  userModel,
+
+  comparePassword,
+  hashPassword,
+};

@@ -7,11 +7,12 @@ const authMiddleware = require("../middleware/authMiddleware");
 router.post(
   "/register",
   [
-    body("email").isEmail().withMessage("invalid email"),
     body("fullname.firstname")
       .isLength({ min: 3 })
       .withMessage("name3 should be more than 3 charters"),
-    body("passwors")
+    body("email").isEmail().withMessage("invalid email"),
+
+    body("password")
       .isLength({ min: 5 })
       .withMessage("Password  must be more than 5 characters"),
   ],
